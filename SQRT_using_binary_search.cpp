@@ -18,22 +18,18 @@ double binarysearchdecimal(double number, double L, double R, double level)
     // double mid = (int(((( L + R ) / 2.0) / level)))*level ;
     if ( L > R )
     {
-        cout << "OUT " << mid << " " << endl;
         return -1;
     }
     if ((( mid * mid ) <= number) && (( (mid+level) * (mid+level) ) > number))
     {
-        cout << "FOUND " << mid << " " << endl;
         return mid;
     }
     if (( mid * mid ) < number)
     {
-        cout << "LESS " << mid << " " << endl;
         return binarysearchdecimal(number, mid, R, level);
     }
     else
     {
-        cout << "MORE " << mid << " " << endl;
         return binarysearchdecimal(number, L, mid, level);
     }
 }
