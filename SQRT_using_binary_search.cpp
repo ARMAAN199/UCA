@@ -1,19 +1,13 @@
 #include <iostream>
-#include <cmath>
-#include <string>
-#include <iterator>
-#include <set>
-// #include <bits/stdc++.h>
 using namespace std;
 
 double binarysearchdecimal(double number, double L, double R, double level) 
 {
     // double mid = ( L + R ) / 2;
     // cout << "MID" << (floor(((( L + R ) / 2) / level)))*level << endl;
-    double midterm = ( L + R ) / 2;
-    midterm =  level!=1? (midterm / level)+level : midterm;
-    midterm = int(midterm);
-    double mid = (midterm * level);
+    double mid = ( L + R ) / 2;
+    mid =  level!=1? (mid / level)+level : mid;
+    mid = (int(mid)*level);
     printf("%f\n", mid);
     // double mid = (int(((( L + R ) / 2.0) / level)))*level ;
     if ( L > R )
