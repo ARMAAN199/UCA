@@ -7,27 +7,27 @@
 using namespace std;
 
 
-float binarysearch(float number, float L, float R) 
+float binarysearch(float number, int L, int R) 
 {
+    float mid = ( L + R ) / 2;
     if ( L > R )
     {
-        cout << "cancelling <<<<< MID IS "<< endl;
+        cout << "1 " << mid << " " << endl;
         return -1;
     }
-    float mid = ( L + R ) / 2;
-    if (( mid * mid ) == number)
+    if ((( mid * mid ) <= number) && (( (mid+1) * (mid+1) ) > number))
     {
-        cout << "FOUND <<<<< MID IS " << mid << endl;
+        cout << "2 " << mid << " " << endl;
         return mid;
     }
     if (( mid * mid ) < number)
     {
-        cout << "less <<<<< MID IS " << mid << endl;
+        cout << "3 " << mid << " " << endl;
         return binarysearch(number, mid, R);
     }    
     else
     {
-        cout << "more <<<<< MID IS " << mid << endl;
+        cout << "4 " << mid << " " << endl;
         return binarysearch(number, L, mid);
     }
 }
@@ -39,6 +39,6 @@ int main() {
     int prec;
     cin >> number;
     cin >> prec;
-    cout << binarysearch(number, 0, number) << "\n";
+    cout<<binarysearch(number, 0, number) << "\n";
 	return 0;
 }
