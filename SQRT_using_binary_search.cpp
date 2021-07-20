@@ -1,10 +1,20 @@
+/*
+ * Program calculates square root of a number using binary Search
+ * 
+ *  @Armaan Jain
+ *  Language: CPP
+ *  Assignment: 1 
+ */
+
 #include <iostream>
 using namespace std;
+
 
 double binarysearchdecimal(double number, double L, double R, double level) 
 {
     double mid = ( L + R ) / 2;
     mid =  level!=1? (mid / level)+level : mid;
+    // Truncating the double values down to the current precision value
     mid = (int(mid)*level);
     if ( L > R )
     {
