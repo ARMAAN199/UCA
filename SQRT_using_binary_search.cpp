@@ -49,3 +49,19 @@ int main() {
     cout << curr_sol << endl;
 	return 0;
 }
+
+/*
+TEST CASES:
+50 3
+7.071
+PASSED
+10 4
+3.1622
+PASSED
+16.05 4
+4.0062
+PASSED
+225 0
+15
+PASSED
+*/
