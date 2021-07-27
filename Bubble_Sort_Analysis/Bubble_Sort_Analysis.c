@@ -9,6 +9,8 @@
 #include <stdlib.h> 
 #include <sys/time.h>
 
+
+/* Creates an Array of size (Parameter - int size) with random Values*/
 void create_array(int arr[], int size){
     int i;
     for(i = 0; i < size; i++){
@@ -16,6 +18,7 @@ void create_array(int arr[], int size){
     }
 }
 
+/* Creates a Sorted Array of Given size*/
 void create_sorted_array(int arr[], int size){
     int i;
     for(i = 0; i < size; i++){
@@ -23,6 +26,7 @@ void create_sorted_array(int arr[], int size){
     }
 }
 
+/* Creates a Decreasing Array of Given size*/
 void create_reversed_array(int arr[], int size){
     int i, j=0;
     for(i = size-1; i >=0; i--){
@@ -31,6 +35,8 @@ void create_reversed_array(int arr[], int size){
     }
 }
 
+
+/* Swaps two Values using Pointers*/
 void swap(int *x,int *y)
 {
     int t;
@@ -39,12 +45,17 @@ void swap(int *x,int *y)
     *y   =  t;
 }
 
+
+/* Uses Bubble Sort Algorithm  and returns the time taken for the entire array to sort.*/
 int bubblesort(int arr[], int size){
     struct timeval current_time;
+
+    /* Getting a timstamp before the sorting process begins */
     gettimeofday(&current_time, NULL);
     int start_sec = current_time.tv_sec;
     int start_micro = current_time.tv_usec;
     
+    /* Last unsorted index is being used to upper bound the inner loop */
     int last_unsorted_index = size-1;
     for(int i=0; i<size; i++)
     {
@@ -57,9 +68,13 @@ int bubblesort(int arr[], int size){
             swapped = 1;
             }
         }
+
+        /* If swapped is 0 here. That means the Array is already sorted at this point.*/
         if(swapped == 0) break;
         last_unsorted_index--;
     }
+
+    /* Getting a timstamp after ending the sorting process */
     gettimeofday(&current_time, NULL);
     int end_sec = current_time.tv_sec;
     int end_micro = current_time.tv_usec;
@@ -67,6 +82,12 @@ int bubblesort(int arr[], int size){
 }
 
 void printstats(int init_size){
+    /*
+    Mode Variable is used to run the code for different array types in one go.
+    Mode 1 - Implies Random Array
+    Mode 2 - Implies Sorted Array
+    Mode 3 - Implies Reversed Array
+    */
     for(int mode =1;mode<=3;mode++)
     {
         int size = init_size;
@@ -97,6 +118,8 @@ void printstats(int init_size){
 int main(){
     int size;
     scanf("%d", &size);
+
+    //Function call that runs bubble sort on all three Modes.
     printstats(size);
     
 }
