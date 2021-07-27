@@ -1,0 +1,50 @@
+// int* create_sorted_array(int size){
+//     int arr[size];
+//     int* q = arr;
+//     for(int i=size-1 ; i>=0; i--){
+//         arr[i]=i;
+//     }
+//     return q;
+// }
+
+// int* create_sorted_array(int size){
+//     int arr[size];
+//     int* r = arr;
+//     for(int i=0 ; i<size; i++){
+//         arr[i]=i;
+//     }
+//     return r;
+// }
+
+    // int* reversed_arr = create_reverse_array(size);
+    // int* sorted_arr = create_sorted_array(size);
+    // for(int i=0; i<size; i++)
+    // {
+    //     printf("%d\n", *(random_arr+i));
+    // }
+
+    // REVERSED
+    //     for(int i=0; i<size; i++)
+    // {
+    //     printf("%d\n", *(reversed_arr+i));
+    // }
+    // // SORTED
+    //     for(int i=0; i<size; i++)
+    // {
+    //     printf("%d\n", *(sorted_arr+i));
+    // }
+    
+    
+        // int sorted_arr[size];
+    // create_sorted_array(sorted_arr, size);
+    // int reversed_arr[size];
+    // create_reversed_array(reversed_arr, size);
+
+    // printf("Time Taken for Sorted Array :%d\n", bubblesort(sorted_arr, size));
+    // printf("Time Taken for Reversed Array :%d\n", bubblesort(reversed_arr, size));
+  
+    // for(int i=0; i<size; i++)
+    // {
+    //     printf("%d\n", *(random_arr+i));
+    // }
+    
