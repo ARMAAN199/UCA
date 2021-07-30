@@ -1,1 +1,0 @@
-{"name":"Local: reverse_string","url":"/Users/armaan199/Documents/armaan/UCA/Getting_Comfortable_with_C/reverse_string.c","tests":[{"id":1627667727853,"input":"\"Hello World\"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/armaan199/Documents/armaan/UCA/Getting_Comfortable_with_C/reverse_string.c","group":"local","local":true}
