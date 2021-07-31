@@ -1,4 +1,4 @@
-/* Analysis of Insertion Sort by running it in different Input Scales
+/* Analysis of Bubble Sort by running it in different Input Scales
  *
  *Author - Armaan Jain 1910990432
  *Input - (Size of Initial Array) Tested for Value 4000.
@@ -47,32 +47,27 @@ void swap(int *x,int *y)
 
 
 /* Uses Bubble Sort Algorithm  and returns the time taken for the entire array to sort.*/
-int bubblesort(int arr[], int size){
+int insersionsort(int arr[], int size){
     struct timeval current_time;
 
     /* Getting a timstamp before the sorting process begins */
     gettimeofday(&current_time, NULL);
     int start_sec = current_time.tv_sec;
     int start_micro = current_time.tv_usec;
-
+    
     /* Last unsorted index is being used to upper bound the inner loop */
-    int last_unsorted_index = size-1;
-    for(int i=0; i<size; i++)
-    {
-        short swapped = 0;
-        for(int j=0; j<last_unsorted_index; j++)
-        {
-            if(*(arr+j) > *(arr+j+1))
-            {
-            swap(arr+j, arr+j+1);
-            swapped = 1;
-            }
-        }
+	int i, temp, j;
+	for (i = 1; i < size; i++) {
+		temp = arr[i];
+		j = i - 1;
 
-        /* If swapped is 0 here. That means the Array is already sorted at this point.*/
-        if(swapped == 0) break;
-        last_unsorted_index--;
-    }
+		/* shift elements greater then temp to right by one position */
+		while (j >= 0 && arr[j] > temp) {
+			arr[j + 1] = arr[j];
+			j = j - 1;
+		}
+		arr[j + 1] = temp;
+	}
 
     /* Getting a timstamp after ending the sorting process */
     gettimeofday(&current_time, NULL);
@@ -100,15 +95,15 @@ void printstats(int init_size){
 
             if(mode == 1)         
             {
-            printf("random Array of size : %d. takes :%f\n", size, (bubblesort(arr, size)*0.000001));
+            printf("random Array of size : %d. takes :%f\n", size, (insersionsort(arr, size)*0.000001));
             }
             else if (mode == 2)
             {
-            printf("Sorted Array of size : %d. takes :%f\n", size, (bubblesort(arr, size)*0.000001));
+            printf("Sorted Array of size : %d. takes :%f\n", size, (insersionsort(arr, size)*0.000001));
             }
             else
             {
-            printf("DESC Array of size : %d. takes :%f\n", size, (bubblesort(arr, size)*0.000001));
+            printf("DESC Array of size : %d. takes :%f\n", size, (insersionsort(arr, size)*0.000001));
             }
             size= size+4000;
         }
@@ -119,7 +114,7 @@ int main(){
     int size;
     scanf("%d", &size);
 
-    //Function call that runs bubble sort on all three Modes.
+    //Function call that runs insertion sort on all three Modes.
     printstats(size);
     
 }
