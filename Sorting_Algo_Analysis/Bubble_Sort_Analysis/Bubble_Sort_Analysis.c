@@ -98,7 +98,7 @@ void printstats(int init_size){
             else if (mode == 2) { create_sorted_array(arr,size);}
             else create_reversed_array(arr,size);
 
-            if((mode == 1))         
+            if(mode == 1)         
             {
             printf("random Array of size : %d. takes :%f\n", size, (bubblesort(arr, size)*0.000001));
             }
