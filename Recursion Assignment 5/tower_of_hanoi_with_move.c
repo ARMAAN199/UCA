@@ -1,10 +1,9 @@
-/* Analysis of Recursive Selection Sort by running it in different Input Scales
+/* Tower of Hanoi Problem With Recursion with implemented move function
  *
  *Author - Armaan Jain 1910990432
- *Input - (Size of Initial Array) Tested for Value 4000 and 8000.
+ *Input - (Size of number of rings on the first plate)
  *Assignment: Assignment_5_Recusrion 
  */
-
 #include <stdio.h>
 #include <stdlib.h> 
 
