@@ -9,6 +9,10 @@
 
 void fib(int a, int b, int n)
 {
+    /* A pattern can be observed that every third element of the Fibonacci sequence 
+       can be found by quadrupling the current element and adding the previous element
+       of this sequence to it.
+    */
     int c = ((b * 4) + a);
     if(!(c>n))
     {
@@ -19,10 +23,10 @@ void fib(int a, int b, int n)
 
 int main()
 {
-    /* Taking two integers as input and passing them to gcd function */
     int n;
     printf("Upto what number the modulated sequence is to be printed?  = ");
     scanf("%d",&n);
+    /* Covering Corner Cases */
     if(n==1)
     {
         printf("2");
