@@ -12,79 +12,68 @@
 int size = 7;
 /* Size could be any. But in the figure shown in the assignment it is 7 */
 int queue[7];
-int back = -1;
-int isLastEnque = 0;
+int tail = -1;
+int head = -1;
 
 
-void enque(int value) {
-
-    if(isFull()) {
-
-        printf("Queue is Full\n");
-        return;
+void enque(int n)
+{
+    if(is_full()) 
+    {
+        printf("Queue Already Full");
+        return INT_MIN;
     }
-    if(front == -1) {
-        front = 0;
+    tail = (tail+1)%size;
+    queue[tail] = n;
+    /* For first element in queue */
+    if(head == -1) {
+        head = 0;
     }
-
-    isLastEnque = 1;
-
-    back = (back + 1) % size;
-
-    queue[back] = value;
 }
 
 int deque() {
-
-    if(isEmpty()) {
-  
-        printf("Queue is Empty\n");
+    if(is_empty()) 
+    {
+        printf("Empty Queue");
         return INT_MAX;
-    } 
-
-    isLastEnque = 0;
-
-    int value = queue[front];
-
-    front = (front + 1) % size;
-
-    return value;
+    }
+    int popped = queue[head];
+    head = (head+1)%size;
+    return popped;
 }
 
-int peek() {
-
-    if(isEmpty()) {
-     
-        printf("Queue is Empty\n");
+int peek()
+{
+    if(!is_empty())
+    {
+        return queue[head];
+    }
+    else
+    { 
+    printf("Queue is Empty\n");
 	return INT_MIN;
     }
-
-    return queue[front];
 }
 
-int isFull() {
-
-    // if front becomes 1 greater than back and the last operation was enque than the queue is full
-    if(isLastEnque && (back + 1) % size == front) {
+int is_full()
+{
+    if((tail+1)%size == head)
+    {
         return 1;
     }
-
     return 0;
 }
 
-int isEmpty() {
-
-    if(front == -1) {
+int is_empty()
+{
+    /* No element was added to the queue */
+    if(head == -1 || head-1 == tail) {
         return 1;
     }
-    // if front becomes 1 greater than back and the last operation was deque than the queue is empty
-    else if( (!isLastEnque) && (back + 1) % size == front ) {
-        return 1;
-    }
-
     return 0;
 }
 
-int main() {
+int main()
+{
     return 0;
 }
