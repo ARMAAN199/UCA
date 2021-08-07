@@ -8,27 +8,15 @@
 #include <stdlib.h> 
 
 
-/* Creates an Array of size (Parameter - int size) with random Values*/
-void visualise_towers(int arr[], int size, int number){
-    if(number == 1)
-    {
-        printf("\nTOWER A\n");
-    }
-    if(number == 2)
-    {
-        printf("\nTOWER B\n");
-    }
-    if(number == 3)
-    {
-        printf("\nTOWER C\n");
-    }
 
-    for(int i=0; i < size; i++)
-    {   
+void visualise_towers(int arr[], int size, int number){
+    if(number == 1) printf("\nTOWER A\n");
+    if(number == 2) printf("\nTOWER B\n");
+    if(number == 3) printf("\nTOWER C\n");
+
+    for(int i=0; i < size; i++){   
         for(int k=0; k < arr[i]; k++)
-        {
-            printf("# ");
-        }    
+            printf("# ");    
         printf("\n");     
     }
 }
@@ -67,30 +55,12 @@ void move_and_print(int arr1[], int *ptr1, int arr2[], int *ptr2, int from, int 
     (*ptr1)--;
     (*ptr2)++;
 
-    if(from == 1 && to == 2)
-    {
-        printf("A TO B\n");
-    }
-    if(from == 1 && to == 3)
-    {
-        printf("A TO C\n");
-    }
-    if(from == 2 && to == 1)
-    {
-        printf("B TO A\n");
-    }
-    if(from == 2 && to == 3)
-    {
-        printf("B TO C\n");
-    }
-    if(from == 3 && to == 1)
-    {
-        printf("C TO A\n");
-    }
-    if(from == 3 && to == 2)
-    {
-        printf("C TO B\n");
-    }       
+    if(from == 1 && to == 2) printf("A TO B\n");
+    if(from == 1 && to == 3) printf("A TO C\n");
+    if(from == 2 && to == 1) printf("B TO A\n");
+    if(from == 2 && to == 3) printf("B TO C\n");
+    if(from == 3 && to == 1) printf("C TO A\n");
+    if(from == 3 && to == 2) printf("C TO B\n");
 }
 
 void tower_of_hanoi(int size, int from[], int *from_ptr, int to[], int *to_ptr, int aux[], int *aux_ptr, int a, int b, int c)
@@ -119,7 +89,5 @@ int main(){
 
     tower_of_hanoi(size, arr1, ptr1, arr3, ptr3, arr2, ptr2, 1, 3, 2);
     tower_printer(arr1, count1, arr2, count2, arr3, count3);
-
     return 0;
-    
 }

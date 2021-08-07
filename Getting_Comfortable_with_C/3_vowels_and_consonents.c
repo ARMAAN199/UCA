@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 int main(){
-    char* str = calloc(1,sizeof(char));
+    char str[100];
     scanf("%[^\n]s",str);
     int vow =0, len =0;
     /* Testing if any variable is a vowel */
