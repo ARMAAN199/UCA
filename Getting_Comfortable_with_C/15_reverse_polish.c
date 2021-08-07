@@ -79,7 +79,6 @@ int main()
         }
         else if(!isspace(input_string[i]))
         {
-            // printf("this is an operatir %c\n", input_string[i]);
             int operand1 = pop();
             int operand2 = pop();
             int val;
