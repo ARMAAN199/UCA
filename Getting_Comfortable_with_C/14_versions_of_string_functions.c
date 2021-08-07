@@ -1,3 +1,10 @@
+/* Implementation of String functions
+ *
+ *Author - Armaan Jain 1910990432
+ *Input - 2 Strings and an integer
+ *Assignment: Assignment 1 - C Foundations
+ */
+
 #include<stdio.h>
 #include<string.h>
 
