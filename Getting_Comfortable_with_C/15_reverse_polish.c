@@ -1,146 +1,111 @@
-#include<stdio.h>
-#include<math.h>  /* for atof() */
-
-#define MAXOP 100   /* maximum size of operand or operator */
-#define NUMBER '0'  /* signal that a number was found */
-
-int getop(char []);
-void ungets(char []);
-void push(double);
-double pop(void);
+#include <stdio.h>
+#include <ctype.h>
+#include <limits.h>
 
 
-/* reverse polish calculator, uses command line */
+int top = -1;
+int stack[100];
+int size = 100;
 
-int main(int argc,char *argv[])
+
+
+/* Aux functions */
+int is_empty()
 {
-    char s[MAXOP];
-    double op2;
+    return top == -1 ? 1 : 0;
+}
 
-    while(--argc > 0)
+int is_full()
+{
+    return top == size ? 1 : 0;
+}
+
+/* Pushes to the top of the stack */
+void push(int n) 
+{
+    top++;
+    if(is_full())
     {
-        ungets(" "); /* push end of argument */
-        ungets(*++argv);
-    
-        switch(getop(s))
+        printf("Stack Overflow");
+    }
+    else
+    {
+        stack[top] = n;
+    }
+}
+
+/* Pops an element and returns it */
+int pop() 
+{
+    printf("POP REQUESTED");
+    for(int i=0; i<=top; i++)
+    {
+        printf("%d ",stack[i]);
+    }
+    printf("\n");
+    if(!is_empty())
+    {
+    int n = stack[top];
+    top--;
+    return n;
+    }
+    else
+    {
+        printf("Stack Underflow");
+        return INT_MIN;
+    }
+}
+
+
+int main()
+{
+    char input_string[100];
+    scanf("%[^\n]s",input_string);
+    for(int i=0; input_string[i]!='\0'; i++)
+    {
+
+        if(isdigit(input_string[i]))
+        {   
+            int val = 0;
+            while(isdigit(input_string[i]))
+            {
+                int digit = input_string[i]-'0';
+                val *= 10;
+                val += digit;
+                i++;
+            }
+            push(val);
+
+        }
+        else if(!isspace(input_string[i]))
         {
-            case NUMBER:
-                    push(atof(s));
-                    break;
-            case '+':
-                    push(pop() + pop());
-                    break;
-            case '*':
-                    push(pop() * pop());
-                    break;
-            case '-':
-                    op2 = pop();
-                    push(pop() - op2);
-                    break;
-            case '/':
-                    op2 = pop();
-                    if(op2 != 0.0)
-                        push(pop()/op2);
-                    else
-                        printf("error: zero divisor \n");
-                    break;
-            default:
-                    printf("error: unknown command %s \n",s);
-                    argc=1;
-                    break;
+            // printf("this is an operatir %c\n", input_string[i]);
+            int operand1 = pop();
+            int operand2 = pop();
+            int val;
+
+            if(input_string[i] == '+')
+            {
+                val = operand1 + operand2;
+            }
+            else if(input_string[i] == '-')
+            {
+                val = operand2 - operand1;
+            }      
+            else if(input_string[i] == '*')
+            {
+                val = operand1 * operand2;
+            }        
+            else if(input_string[i] == '/')
+            {
+                val = operand2 * operand1;
+            }
+            push(val);
         }
     }
-    printf("\t %8g\n",pop());
 
-    return 0;
-}
-
-#include<ctype.h>
-
-int getch(void);
-void ungetch(int);
-
-/* getop: get next operator or numeric operand */
-
-int getop(char s[])
-{
-    int i,c;
-        
-    while((s[0] = c = getch()) == ' ' || c == '\t')
-        ;
-
-    s[1] = '\0';
-
-    if(!isdigit(c) && c != '.')
-        return c;
-
-    i = 0;
-
-    if( isdigit(c)) /* collect integer part */
-        while(isdigit(s[++i] = c = getch()))
-            ;
-    if( c == '.') /* collect from fraction part */
-        while(isdigit(s[++i] = c = getch()))
-            ;
-    s[i] = '\0';
-    
-    if(c != EOF)
-        ungetch(c);
-    return NUMBER;
-}
-
-#define BUFSIZE 100
-char buf[BUFSIZE];  /* buffer for ungetch */
-int bufp = 0;       /* next free position in buf */
-
-int getch(void) /* get a (possibly pushed back) character */
-{
-    return (bufp > 0)? buf[--bufp]: getchar();
-}
-
-void ungetch(int c) /* push character back on input */
-{
-    if ( bufp >= BUFSIZE)
-        printf("ungetch: too many characters \n");
-    else
-        buf[bufp++] = c;
-}
-
-#define MAXVAL 100 /* maximum depth of value of stack */
-
-int sp = 0; /* next free stack position */
-double val[MAXVAL];     /* value stack */
-
-/* push : push f onto value stack */
-void push(double f)
-{
-    if(sp < MAXVAL)
-        val[sp++] =f;
-    else
-        printf("error: stack full, can't push %g \n",f);
-}
-
-/* pop: pop and return top value from the stack */
-
-double pop(void)
-{
-    if ( sp > 0)
-        return val[--sp];
-    else
+    for(int i=0; i<=top; i++)
     {
-        printf("error: stack empty \n");
-        return 0.0;
+        printf("%d ",stack[i]);
     }
-}
-
-#include<string.h>
-/* ungets: push string back onto the input */
-
-void ungets(char s[])
-{
-    int len=strlen(s);
-    void ungetch(int);
-
-    while(len > 0)
-        ungetch(s[--len]);
 }
