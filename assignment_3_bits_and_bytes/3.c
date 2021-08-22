@@ -16,7 +16,7 @@
 //So we basically add those two up. 
 
 int sign (int x) {
-     return (i >> 31) - (-i >> 31);;
+     return (x >> 31) - (-x >> 31);;
 }
 
 int main(){
