@@ -10,6 +10,7 @@
 *  Legal ops: ~ & ^ | + << >>
 *  Max ops: 12
 */ 
+#include <stdio.h>
 
 int bang(int a) {
   return (((~a + 1) | a) >> 31) + 1;

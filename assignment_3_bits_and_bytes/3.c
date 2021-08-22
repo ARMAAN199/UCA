@@ -14,6 +14,7 @@
 
 //Saw this on gfg that n>>31 will give -1 if the number is negative. and obv itll be 1 for -n. 
 //So we basically add those two up. 
+#include <stdio.h>
 
 int sign (int x) {
      return (x >> 31) - (-x >> 31);;

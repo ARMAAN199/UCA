@@ -8,6 +8,7 @@
 /* Legal ops:  ~ |  
 /* Max ops: 8
 */
+#include <stdio.h>
 
 int bitAnd (int x, int y) {
      return ~(~x|~y);

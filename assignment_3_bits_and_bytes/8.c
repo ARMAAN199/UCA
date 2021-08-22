@@ -11,6 +11,7 @@
 /* Legal ops: ~ & ^ | << >>
 /* as zero
 */
+#include <stdio.h>
 
 int invert(int x, int p, int n)
 {

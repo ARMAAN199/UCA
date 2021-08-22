@@ -11,6 +11,7 @@
 * ! ~ & ^ | + << >>
 * Max ops: 16
 */
+#include <stdio.h>
 
 int conditional(int x, int p, int n) {
   return n ^ ((p ^ n) & ((!x) + ~0));

@@ -12,8 +12,10 @@
 *Max ops: 20
 */
 
+#include <stdio.h>
+
 int logicalShift(int x, int n) {
-  return (x >> n) & (~(((1 << 31) >> n) << 1));
+  return (x >> n);
 }
 
 int main(){
