@@ -8,47 +8,39 @@
 
 #include <stdio.h>
 
-void merge(int *arr,int l ,int m ,int r)
-{
-    int i=l ,j=m+1 ,k=l;
-    int temp[r+1];
-    while(i<=m && j<=r)
+/* Uses Bubble Sort Algorithm  and returns the time taken for the entire array to sort.*/
+int bubblesort(int arr[], int size){
+    struct timeval current_time;
+
+    /* Getting a timstamp before the sorting process begins */
+    gettimeofday(&current_time, NULL);
+    int start_sec = current_time.tv_sec;
+    int start_micro = current_time.tv_usec;
+
+    /* Last unsorted index is being used to upper bound the inner loop */
+    int last_unsorted_index = size-1;
+    for(int i=0; i<size; i++)
     {
-       if(arr[i]<arr[j])
-       {
-           temp[k++] = arr[i++];
-       }
-       else
-       {
-          temp[k++] = arr[j++];
-       }
+        short swapped = 0;
+        for(int j=0; j<last_unsorted_index; j++)
+        {
+            if(*(arr+j) > *(arr+j+1))
+            {
+            swap(arr+j, arr+j+1);
+            swapped = 1;
+            }
+        }
+
+        /* If swapped is 0 here. That means the Array is already sorted at this point.*/
+        if(swapped == 0) break;
+        last_unsorted_index--;
     }
 
-    while(i<=m)
-    {
-    temp[k++]=arr[i++];
-    }
-
-    while(j<=r)
-    {
-    temp[k++]=arr[j++];
-    }
-
-    for(i=l ;i<=r;i++)
-    {
-        arr[i]=temp[i];
-    }
-}
-
-void mergeSort(int *arr,int l ,int r)
-{
-    if(l<r)
-    {
-     int mid = (l+r)/2;
-      mergeSort(arr,l,mid);
-      mergeSort(arr,mid+1,r);
-      merge(arr,l,mid,r);
-    }
+    /* Getting a timstamp after ending the sorting process */
+    gettimeofday(&current_time, NULL);
+    int end_sec = current_time.tv_sec;
+    int end_micro = current_time.tv_usec;
+    return  (end_sec-start_sec == 0) ? (end_micro-start_micro) : (((end_sec-start_sec)*1000000)+(end_micro-start_micro));
 }
 
 int main()
@@ -63,7 +55,7 @@ int main()
    }
    scanf("%d",&m);
 
-   mergeSort(a,0,n-1);
+   bubblesort(a,n);
 
    printf("%d \n",a[m-1]);
 }
