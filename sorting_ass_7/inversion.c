@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+//simply adding the number of elements smaller than each element
+
 int main()
 {
     int size;
