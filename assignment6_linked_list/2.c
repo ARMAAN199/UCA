@@ -8,6 +8,8 @@ struct linkedlist{
 
 struct linkedlist *head = NULL;
 
+// Similar to stack, the same push operation.
+
 void push(int val){
     struct linkedlist *new_node, *iter;
 
@@ -28,6 +30,8 @@ void push(int val){
     }
 }
 
+//return the first element of the linked list. and move head by 1 position
+
 void pop(){
     struct linkedlist *ptr;
     if(head == NULL)
@@ -40,6 +44,8 @@ void pop(){
         free(ptr);
     }
 }
+
+//return the value of headnode if the list is not empty
 
 void peek(){
     if(head == NULL)

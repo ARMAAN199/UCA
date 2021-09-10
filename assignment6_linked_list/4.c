@@ -1,22 +1,25 @@
-bool recur(struct ListNode **start, struct ListNode *end){
-    if(end == NULL)
-        return true;
-    
-    bool isEqual;
-    int num = end -> val;
-    
-    isEqual = recur(start, end -> next);
-    
-    if(isEqual == false)
-        return false;
-    if((*start) -> val == num){
-        *start = (*start) -> next;
-        return true;
-    }else{
-        return false;
-    }
-}
+//simply copy all elements to an array and then traverse again to check if it palindrome.
+//This is a 2n Solution.
+
 bool isPalindrome(struct ListNode* head){
-    return recur(&head, head);
+    struct ListNode* copy = head;
+    int arr[100];
+    int i=0;
+    while(head!=NULL)
+    {
+        int arr[i] = copy->val;
+        copy= copy->next;
+        i++;
+    }
+    bool ispalindrome = 1;
+    for(int j=i-1; j>0; j--)
+    {
+        if(head->val != arr[j])
+        isPalindrome = 0;
+
+        head=head->next;
+    }
+
+    return isPalindrome;
 }
 

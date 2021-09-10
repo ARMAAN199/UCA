@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Node struct
+
 struct linkedlist{
     int value;
     struct linkedlist* next;
 };
 
 struct linkedlist *head = NULL;
+
+// We check if the list is empty. if so. the new element is made to be the head.
+// else we traverse thought the list to append the new node at the end.
 
 void push(int val){
     struct linkedlist *new_node, *iter;
@@ -27,6 +32,10 @@ void push(int val){
         iter -> next = new_node;
     }
 }
+
+// We check if the list is empty. if so. We dont return anything
+// else if there is only one element, we return that
+// or we traverse till the end return the last element.
 
 void pop(){
     struct linkedlist *traverse, *ptr;
@@ -50,6 +59,8 @@ void pop(){
     }
 }
 
+// similar to pop but we don't make the next of 2nd last element NULL
+
 void peek(){
     struct linkedlist *traverse = head;
     if(head == NULL)
@@ -64,6 +75,8 @@ void peek(){
         printf("Peeked value: %d\n\n", traverse -> value );
     }
 }
+
+//Utility functions
 
 void is_empty(){
     if(head == NULL)

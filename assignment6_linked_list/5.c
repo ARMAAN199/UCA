@@ -1,26 +1,21 @@
+//Incomplete but approach is same.
+
 struct ListNode* deleteDuplicates(struct ListNode* head){
-int last_seen;
-struct ListNode* ptr;
-struct ListNode* ptr2;
-if (head==NULL) return NULL;
-while ((head->next != NULL) && (head->val == head->next->val)) {
-    ptr=head->next;
-    while ((ptr->next != NULL) && (ptr->next->val == head->val))
-        ptr = ptr->next;
-    head = ptr->next;
-    if (head==NULL) return NULL;
-}
-ptr=head;    
-while (ptr!=NULL) {
-    ptr2 = ptr->next;
-    if (ptr2!=NULL) {
-        last_seen = ptr2->val;
-        while ((ptr2->next!=NULL) && (ptr2->next->val==last_seen)) 
-            ptr2 = ptr2->next;
+    // struct ListNode* temp = head;
+    struct ListNode* curr = head;
+    struct ListNode* prev = NULL;
+    while(curr != NULL)
+    {
+       if(curr->next!=NULL && curr->val == curr->next->val)
+       {
+           int flag = curr->val;
+           while(curr->val == flag && curr->next!= NULL)
+           {
+               curr = curr->next;
+           }
+       }
+           prev->next = curr;
     }
-    if (ptr->next != ptr2) ptr->next = ptr2->next;
-      else ptr=ptr2;
-}
     
-return head;
+    return prev;
 }
